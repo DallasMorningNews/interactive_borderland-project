@@ -1,0 +1,281 @@
+  /*                       */
+ /* Default style imports */
+/*                       */
+
+@import 'base';
+
+
+// Should get Hancock to embed these in base, at some point:
+
+@import 'header';
+@import 'footer';
+
+
+  /*                         */
+ /* Project-specific styles */
+/*                         */
+
+// Enter your custom styles here.
+
+// body {
+//   background-image: url('../images/_texas.jpg');
+//   background-repeat: no-repeat;
+//   background-size: 8000px 8000px;
+//   background-position: 35% 35%;
+//   @include transition(all, .25s, ease-out);
+// }
+
+.cover {
+  position: fixed;
+  top: 51px;
+  left: 0;
+  overflow: hidden;
+  z-index: 100;
+  width: 100%;
+  height: calc(100vh - 51px);
+}
+
+.cover__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cover__content {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5,5,5,.65);
+  text-align: center;
+  padding-top: 10vh;
+  color: white;
+  h1, h2 {
+    font-weight: bold;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  h1 {
+    @include type(4rem, 4.4rem, 1.2rem);
+    text-transform: uppercase;
+  }
+  h2 {
+    @include type(2rem, 2.4rem, 2.4rem);
+  }
+  button {
+    background-color: rgba(15,15,15,.0);
+    border: 2px solid white;
+    padding: 15px 10px;
+    color: white;
+    @include type(1.4rem, 1.8rem, 0);
+    text-transform: uppercase;
+    cursor: pointer;
+    @include transition(all, .2s, ease-out);
+    border-radius: 3px;
+    &:hover {
+      background-color: rgba(15,15,15,1);
+    }
+  }
+}
+.cover__logo {
+  max-width: 150px;
+  margin-bottom: 2.4rem;
+}
+
+.cover__branding {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+}
+
+.cover__branding {
+  max-width: 150px;
+  left: 50%;
+  margin-left: -75px;
+}
+
+.cover--small {
+  max-width: 70px;
+  float: left;
+  &:first-of-type {
+    margin-right: 10px;
+  }
+}
+.cover--large {
+  max-width: 150px;
+  clear: both;
+  margin-top: 1.2rem;
+
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .cover__video {
+    width: 100%;
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .cover__video {
+    height: 100%;
+    width: 325%;
+    left: -112.5%;
+  }
+}
+
+
+#map {
+  width: calc(100% - 400px);
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 500px;
+}
+#minimap {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+  height: 120px;
+  background-color: black;
+  border: 2px solid black;
+  .mapboxgl-ctrl-attrib {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+
+.locator {
+  width: 14px;
+  height: 14px;
+  border: 2px solid $borderBrown;
+  display: block;
+}
+
+#content {
+  max-width: 500px;
+}
+
+#upper-block {
+  background-color: $borderbeige;
+  padding-bottom: 50px;
+  color: rgb(15,15,15);
+  margin-bottom: 50px;
+  position: relative;
+  &:after {
+    @include psuedoElement(30px, 30px, absolute);
+    background-color: $borderbeige;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    margin-left: -15px;
+    @include rotate(45deg);
+  }
+}
+
+.location {
+  margin-bottom:  9rem;
+  padding-bottom: 9rem;
+  border-bottom: 5px solid $borderbeige;
+  position: relative;
+  &:after {
+    @include psuedoElement(32px, 64px, 'absolute');
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    margin-left: -16px;
+    background-image: url('../images/_wall.svg');
+    background-repeat: no-repeat;
+  }
+  &.no-pad {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    &:after {
+      display: none;
+    }
+  }
+  img, video {
+    width: 100%;
+    margin-bottom: 1.2rem;
+  }
+  h4, h5, h6 {
+    font-family: $sans;
+    font-weight: bold;
+  }
+  h4 {
+    letter-spacing: -.1px;
+    @include type(3rem, 3.6rem, .3rem);
+  }
+  h5 {
+    text-transform: uppercase;
+    color: $black33;
+    margin-bottom: .3rem;
+  }
+  h6 {
+    font-family: $sans;
+    padding-left: 1.5rem;
+    background-image: url('../images/_marker-brown.png');
+    background-repeat: no-repeat;
+    background-position: left 5px;
+    background-size: 1rem;
+    @include type(1.2rem, 2.4rem, 0);
+    text-transform: uppercase;
+    color: $borderBrown;
+    position: relative;
+    &last-of-type:after {
+      @include psuedoElement(200px, 5px, relative);
+      border-bottom: 1px dotted $borderBrown;
+      left: -1.5rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+  p {
+    @include type(1.4rem, 2.4rem, 2.4rem);
+    padding-bottom: 2.4rem;
+    border-bottom: 1px solid $black235;
+    &:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}
+
+.map__label {
+  font-family: $sans;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(15,15,15,.8);
+  text-transform: uppercase;
+}
+
+.city {
+  margin-left: 20px;
+  margin-top: -10px;
+  @include type(2rem, 2rem, 0);
+  background-color: rgba(15,15,15,.9);
+  padding: 5px;
+}
+
+.country {
+  opacity: .5;
+  @include type(5rem, 5rem, 0);
+  margin-left: 50px;
+}
+
+.label__mexico {
+  left: -200px !important;
+  margin-left: 0;
+}
+
+.pin {
+  width: 20px;
+  height: 100px;
+  background-image: url('../images/_marker-brown.png');
+  background-size: 20px;
+  background-repeat: no-repeat;
+}
