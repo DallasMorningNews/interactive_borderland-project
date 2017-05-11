@@ -10,20 +10,11 @@
 @import 'header';
 @import 'footer';
 
-
-  /*                         */
- /* Project-specific styles */
-/*                         */
-
-// Enter your custom styles here.
-
-// body {
-//   background-image: url('../images/_texas.jpg');
-//   background-repeat: no-repeat;
-//   background-size: 8000px 8000px;
-//   background-position: 35% 35%;
-//   @include transition(all, .25s, ease-out);
-// }
+.no-scroll {
+  max-height: 100vh;
+  overflow: hidden;
+  position: fixed;
+}
 
 .cover {
   position: fixed;

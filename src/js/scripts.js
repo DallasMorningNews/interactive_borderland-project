@@ -5,22 +5,24 @@ import './furniture';
 
 $(document).ready(() => {
   /*
-  *************************************************
+  ******************************************************************************
   GETTING INTO THIS PROJECT (AKA, SPLASH SCREEN)
-  *************************************************
+  ******************************************************************************
   */
 
   // hides the cover screen and allows the user to enter into the interactive
   $('#cover__enter').click(() => {
     $('.cover').fadeOut(1000);
-    $('body').removeClass('no-scroll');
+    $('html, body').removeClass('no-scroll');
   });
+
+  // ***************************************************************************
 
 
   /*
-  *************************************************
+  ******************************************************************************
   LABEL SETUP
-  *************************************************
+  ******************************************************************************
   */
 
   // array of labels that will get applied to the map. Since we're working with
@@ -36,13 +38,6 @@ $(document).ready(() => {
       el: 'h3',
       marker: true,
     },
-    // {
-    //   type: 'map__label city',
-    //   content: 'Tornillo',
-    //   coord: [-106.077330, 31.408324],
-    //   el: 'h3',
-    //   marker: true,
-    // },
     {
       type: 'map__label city',
       content: 'Presidio',
@@ -178,13 +173,17 @@ $(document).ready(() => {
     },
   ];
 
+  // ***************************************************************************
+
 
   /*
-  *************************************************
-  SETTING UP THE MAP
-  *************************************************
+  ******************************************************************************
+  SETTING UP THE MAP(S)
+  ******************************************************************************
   */
 
+  // creating our new map object. this is the larger map, that uses specially created
+  // landsat images for the tiles (thanks Andrew Chavez!)
   const map = new mapboxgl.Map({
     container: 'map',
     style: {
@@ -214,6 +213,7 @@ $(document).ready(() => {
     renderWorldCopies: false,
   });
 
+  // this is our minimap. 1/10th the size, twice as mappy
   const minimap = new mapboxgl.Map({
     container: 'minimap',
     style: 'https://maps.dallasnews.com/styles.json',
@@ -224,18 +224,21 @@ $(document).ready(() => {
   // setting an empty variable that will be our mini map locator marker
   let miniLocator;
 
-  // locking the map and minimap down
+  // locking the map and minimap down. no soup for you
   map.scrollZoom.disable();
-  // map.dragPan.disable();
+  map.dragPan.disable();
   map.dragRotate.disable();
   map.doubleClickZoom.disable();
   map.touchZoomRotate.disable();
 
   minimap.scrollZoom.disable();
-  // map.dragPan.disable();
+  minimap.dragPan.disable();
   minimap.dragRotate.disable();
   minimap.doubleClickZoom.disable();
   minimap.touchZoomRotate.disable();
+
+  // when our map is done loading, we're going to add the geojson for the texas
+  // and new mexico borders
 
   map.on('load', () => {
     map.addSource('texas', {
@@ -280,9 +283,9 @@ $(document).ready(() => {
 
 
     /*
-    *************************************************
+    ****************************************************************************
     APPLYING CUSTOM LABELS AND MARKERS TO THE MAP
-    *************************************************
+    ****************************************************************************
     */
 
     function applyLabels(element) {
@@ -307,27 +310,40 @@ $(document).ready(() => {
     // add it to the map
     labels.forEach(applyLabels);
 
+
+    // applying the markers to the map for our different locations
     function applyMarkers(element) {
+
+      // if the element has an mcoord, which is a coordinate specific to the location
+      // of the video ...
       if (element.mcoord) {
+        // create an div element with the marker and pin classes
         const el = document.createElement('div');
         el.className = 'marker pin';
 
+        // create a new Marker object for that element and use the mcoord to add it
+        // to the map
         new mapboxgl.Marker(el, { offset: [-10, -28] })
           .setLngLat(element.mcoord)
           .addTo(map);
       }
     }
 
+    // run through the labels array and apply marker pins when appropriate
     labels.forEach(applyMarkers);
   });
 
+  // ***************************************************************************
+
 
   /*
-  *************************************************
+  ******************************************************************************
   ADJUSTING ZOOM LEVEL OF MAPS FOR SCREEN SIZE
-  *************************************************
+  ******************************************************************************
   */
 
+  // based on the window width, our map takes on different dimmensions. when the map
+  // is smaller, we need a wider zoom level
   function adjustZoomLevels(newWidth) {
     if (newWidth <= 800) {
       minimap.setZoom(1.75);
@@ -338,15 +354,18 @@ $(document).ready(() => {
     }
   }
 
+  // ***************************************************************************
+
 
   /*
-  *************************************************
+  ******************************************************************************
   MINIMAP SETUP
-  *************************************************
+  ******************************************************************************
   */
 
+  // when the minimap loads, set the zoom level for the two maps, then add the
+  // border geojson for tex s and new mexico
   minimap.on('load', () => {
-
     adjustZoomLevels($(window).width());
 
     minimap.addSource('mini-texas', {
@@ -402,11 +421,13 @@ $(document).ready(() => {
     miniLocator.addTo(minimap);
   });
 
+  // ***************************************************************************
+
 
   /*
-  *************************************************
+  ******************************************************************************
   SETTING UP THE MAP ANIMATIONS ON SCROLL
-  *************************************************
+  ******************************************************************************
   */
 
   // setting the variables we'll be measuring against: the old window scroll position
@@ -547,13 +568,13 @@ $(document).ready(() => {
     oldP = newP;
   });
 
-  //----------------------------------------------------------------------------
+  // ***************************************************************************
 
 
   /*
-  *************************************************
+  ******************************************************************************
   ACCOUNT FOR WINDOW RESIZE HAVOC
-  *************************************************
+  ******************************************************************************
   */
 
   // if the window resizes, it could effect our waypoint positions, so we need to update those
@@ -570,4 +591,6 @@ $(document).ready(() => {
 
     adjustZoomLevels(newWidth);
   });
+
+  // ***************************************************************************
 });
