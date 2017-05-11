@@ -4,11 +4,24 @@ import $ from 'jquery';
 import './furniture';
 
 $(document).ready(() => {
+  /*
+  *************************************************
+  GETTING INTO THIS PROJECT (AKA, SPLASH SCREEN)
+  *************************************************
+  */
+
   // hides the cover screen and allows the user to enter into the interactive
   $('#cover__enter').click(() => {
     $('.cover').fadeOut(1000);
     $('body').removeClass('no-scroll');
   });
+
+
+  /*
+  *************************************************
+  LABEL SETUP
+  *************************************************
+  */
 
   // array of labels that will get applied to the map. Since we're working with
   // landsat satellite images for tiles, we need to apply some city and state/country
@@ -19,6 +32,7 @@ $(document).ready(() => {
       type: 'map__label city',
       content: 'Hachita',
       coord: [-108.292584, 31.8662218],
+      mcoord: [-107.948805, 31.790043],
       el: 'h3',
       marker: true,
     },
@@ -33,6 +47,7 @@ $(document).ready(() => {
       type: 'map__label city',
       content: 'Presidio',
       coord: [-104.376493, 29.562273],
+      mcoord: [-104.376493, 29.562273],
       el: 'h3',
       marker: true,
     },
@@ -40,20 +55,23 @@ $(document).ready(() => {
       type: 'map__label city',
       content: 'Lake Amistad',
       coord: [-101.058174, 29.449884],
+      mcoord: [-101.058174, 29.449884],
       el: 'h3',
       marker: true,
     },
     {
       type: 'map__label city',
       content: 'Laredo',
-      coord: [-99.496419, 27.543932],
+      coord: [-99.536872, 27.597660],
+      mcoord: [-99.536872, 27.597660],
       el: 'h3',
       marker: true,
     },
     {
       type: 'map__label city',
       content: 'McAllen',
-      coord: [-98.3268518, 26.2259649],
+      coord: [-98.239140, 26.194342],
+      mcoord: [-98.292448, 26.120063],
       el: 'h3',
       marker: true,
     },
@@ -68,6 +86,7 @@ $(document).ready(() => {
       type: 'map__label city',
       content: 'El Paso',
       coord: [-106.487386, 31.752576],
+      mcoord: [-106.487386, 31.752576],
       el: 'h3',
       marker: true,
     },
@@ -75,49 +94,50 @@ $(document).ready(() => {
       type: 'map__label city',
       content: 'Brooks County',
       coord: [-98.193096, 27.090503],
+      mcoord: [-98.193096, 27.090503],
       el: 'h3',
       marker: true,
     },
     {
       type: 'map__label country label__texas', // el paso
       content: 'Texas',
-      coord: [-106.21961, 31.70074],
+      coord: [-106.48961, 31.950074],
       el: 'h2',
     },
     {
       type: 'map__label country label__mexico', // el paso
       content: 'Mexico',
-      coord: [-106.465385, 31.679182],
+      coord: [-106.565385, 31.679182],
       el: 'h2',
     },
     {
       type: 'map__label country label__mexico', // presidio
       content: 'Mexico',
-      coord: [-104.46493, 29.462273],
+      coord: [-104.66493, 29.602273],
       el: 'h2',
     },
     {
       type: 'map__label country label__texas', // presidio
       content: 'Texas',
-      coord: [-104.260093, 29.712273],
+      coord: [-104.430093, 29.752273],
       el: 'h2',
     },
     {
       type: 'map__label country label__mexico', // lake amistad
       content: 'Mexico',
-      coord: [-101.038174, 29.249884],
+      coord: [-101.338174, 29.459884],
       el: 'h2',
     },
     {
       type: 'map__label country label__texas', // lake amistad
       content: 'Texas',
-      coord: [-101.078174, 29.649884],
+      coord: [-101.028174, 29.649884],
       el: 'h2',
     },
     {
       type: 'map__label country label__mexico', // laredo
       content: 'Mexico',
-      coord: [-99.696419, 27.443932],
+      coord: [-99.756419, 27.563932],
       el: 'h2',
     },
     {
@@ -129,13 +149,13 @@ $(document).ready(() => {
     {
       type: 'map__label country label__texas', // brooks county
       content: 'Texas',
-      coord: [-98.493096, 26.890503],
+      coord: [-98.383096, 26.990503],
       el: 'h2',
     },
     {
       type: 'map__label country label__mexico', // mcallen-reynosa
       content: 'Mexico',
-      coord: [-98.4268518, 26.0259649],
+      coord: [-98.4568518, 25.9859649],
       el: 'h2',
     },
     {
@@ -147,13 +167,13 @@ $(document).ready(() => {
     {
       type: 'map__label country label__mexico', // hachita
       content: 'Mexico',
-      coord: [-107.892584, 31.7562218],
+      coord: [-108.022584, 31.7562218],
       el: 'h2',
     },
     {
       type: 'map__label country label__newmexico', // hachita
       content: 'N. Mexico',
-      coord: [-108.192584, 31.9662218],
+      coord: [-108.052584, 31.9262218],
       el: 'h2',
     },
   ];
@@ -258,8 +278,12 @@ $(document).ready(() => {
       },
     });
 
-    // APPLYING THE CUSTOM LABELS
-    // ----------------------------------------
+
+    /*
+    *************************************************
+    APPLYING CUSTOM LABELS AND MARKERS TO THE MAP
+    *************************************************
+    */
 
     function applyLabels(element) {
       // create an html element for each element passed into the fucntion
@@ -284,12 +308,12 @@ $(document).ready(() => {
     labels.forEach(applyLabels);
 
     function applyMarkers(element) {
-      if (element.marker === true) {
+      if (element.mcoord) {
         const el = document.createElement('div');
         el.className = 'marker pin';
 
         new mapboxgl.Marker(el, { offset: [-10, -28] })
-          .setLngLat(element.coord)
+          .setLngLat(element.mcoord)
           .addTo(map);
       }
     }
@@ -297,7 +321,34 @@ $(document).ready(() => {
     labels.forEach(applyMarkers);
   });
 
+
+  /*
+  *************************************************
+  ADJUSTING ZOOM LEVEL OF MAPS FOR SCREEN SIZE
+  *************************************************
+  */
+
+  function adjustZoomLevels(newWidth) {
+    if (newWidth <= 800) {
+      minimap.setZoom(1.75);
+      map.setZoom(8);
+    } else {
+      map.setZoom(9);
+      minimap.setZoom(2.5);
+    }
+  }
+
+
+  /*
+  *************************************************
+  MINIMAP SETUP
+  *************************************************
+  */
+
   minimap.on('load', () => {
+
+    adjustZoomLevels($(window).width());
+
     minimap.addSource('mini-texas', {
       type: 'geojson',
       data: 'assets/tx.json',
@@ -346,7 +397,7 @@ $(document).ready(() => {
 
     // add that element to the minimap at the coordinates specified on the element object
     // we're offsetting 7px horizontally and vertically to account for the locator box size
-    miniLocator = new mapboxgl.Marker(locator, {offset: [-7, -7]});
+    miniLocator = new mapboxgl.Marker(locator, { offset: [-7, -7] });
     miniLocator.setLngLat([-107.948805, 31.790043]);
     miniLocator.addTo(minimap);
   });
@@ -369,7 +420,7 @@ $(document).ready(() => {
 
 
   // SETTING THE OFFSETS OF THE LOCATION DIVS
-  // ----------------------------------------
+  // ---------------------------------------------------------------------------
 
   // creating a new offsets array to hold the offset positions of each 'location'
   let offsets = [];
@@ -385,19 +436,21 @@ $(document).ready(() => {
     });
   }
 
-  // END SETTING THE OFFSETS
-  // -----------------------
+  // ---------------------------------------------------------------------------
 
 
   // MOVING THE MAP
-  // --------------
+  // ---------------------------------------------------------------------------
 
   function moveMap(lnglat) {
     map.panTo(lnglat);
   }
 
+  // ---------------------------------------------------------------------------
+
+
   // TRACKING THE SCROLL
-  // ----------------------------------------
+  // ---------------------------------------------------------------------------
 
   // as the user scrolls, iterate over the offsets array and check to see if
   // at that moment, the offset is greater than the old window scroll position +
@@ -494,6 +547,9 @@ $(document).ready(() => {
     oldP = newP;
   });
 
+  //----------------------------------------------------------------------------
+
+
   /*
   *************************************************
   ACCOUNT FOR WINDOW RESIZE HAVOC
@@ -511,5 +567,7 @@ $(document).ready(() => {
       offsets = [];
       wWidth = newWidth;
     }
+
+    adjustZoomLevels(newWidth);
   });
 });
