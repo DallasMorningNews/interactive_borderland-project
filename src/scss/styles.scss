@@ -24,6 +24,7 @@
   z-index: 100;
   width: 100%;
   height: calc(100vh - 51px);
+  background-color: $black33;
 }
 
 .cover__video {
@@ -111,15 +112,16 @@
 
 @media (min-aspect-ratio: 16/9) {
   .cover__video {
-    width: 100%;
-    height: 300%;
+    width: 100% !important;
+    height: 300% !important;
     top: -100%;
+    left: 0 !important;
   }
 }
 
 @media (max-aspect-ratio: 16/9) {
   .cover__video {
-    height: 100%;
+    height: 110%;
     width: 325%;
     left: -112.5%;
   }
