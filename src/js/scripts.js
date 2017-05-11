@@ -230,12 +230,14 @@ $(document).ready(() => {
   map.dragRotate.disable();
   map.doubleClickZoom.disable();
   map.touchZoomRotate.disable();
+  map.keyboard.disable();
 
   minimap.scrollZoom.disable();
   minimap.dragPan.disable();
   minimap.dragRotate.disable();
   minimap.doubleClickZoom.disable();
   minimap.touchZoomRotate.disable();
+  minimap.keyboard.disable();
 
   // when our map is done loading, we're going to add the geojson for the texas
   // and new mexico borders
