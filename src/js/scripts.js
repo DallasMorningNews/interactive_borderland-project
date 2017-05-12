@@ -1,9 +1,44 @@
-/* global mapboxgl: true */
+/* global mapboxgl: true, ga: true */
 
 import $ from 'jquery';
 import './furniture';
 
 $(document).ready(() => {
+  /*
+  ******************************************************************************
+  CUSTOM GOOGLE ANALYTICS FOR VIDEO TRACKING
+  ******************************************************************************
+  */
+
+  // if a video is played ...
+  $('.border__video')[0].addEventListener('play', function () {
+    // get the id for
+    const id = $(this).attr('id');
+
+    // check to see if the video is just starting for the first time, or resuming
+    // then fire a ga event corresponding to that
+    if ($(this)[0].currentTime === 0) {
+      ga('interactivesTracker.send', 'event', `${id}-start`, 'play');
+    } else {
+      ga('interactivesTracker.send', 'event', `${id}-restart`, 'play');
+    }
+  });
+
+  // fire ga event if the video is pause
+  $('.border__video')[0].addEventListener('pause', function () {
+    const id = $(this).attr('id');
+    ga('interactivesTracker.send', 'event', `${id}-pause`, 'pause');
+  });
+
+  // fire ga event if the video ends
+  $('.border__video')[0].addEventListener('ended', function () {
+    const id = $(this).attr('id');
+    ga('interactivesTracker.send', 'event', `${id}-ended`, 'ended');
+  });
+
+  // ***************************************************************************
+
+
   /*
   ******************************************************************************
   GETTING INTO THIS PROJECT (AKA, SPLASH SCREEN)
@@ -94,6 +129,14 @@ $(document).ready(() => {
       marker: true,
     },
     {
+      type: 'map__label city',
+      content: 'Brownsville',
+      coord: [-97.5014438, 25.9024341],
+      mcoord: [-97.5000273, 25.9011389],
+      el: 'h3',
+      marker: true,
+    },
+    {
       type: 'map__label country label__texas', // el paso
       content: 'Texas',
       coord: [-106.48961, 31.950074],
@@ -157,6 +200,18 @@ $(document).ready(() => {
       type: 'map__label country label__texas', // mcallen-reynosa
       content: 'Texas',
       coord: [-98.2268518, 26.3259649],
+      el: 'h2',
+    },
+    {
+      type: 'map__label country label__mexico', // brownsville
+      content: 'Mexico',
+      coord: [-97.8014438, 25.9524341],
+      el: 'h2',
+    },
+    {
+      type: 'map__label country label__texas', // brownsville
+      content: 'Texas',
+      coord: [-97.7014438, 26.1024341],
       el: 'h2',
     },
     {

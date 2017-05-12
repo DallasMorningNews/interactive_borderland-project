@@ -123,7 +123,7 @@ googletag.enableServices();
     <div class="location" data-lat="31.790043" data-long="-107.948805">
       <h5>Near Hachita, NM</h5>
       <h6>31.790043, -107.948805</h6>
-      <video id="" preload="metadata" controls playsinline poster="images/_hachita1-poster.jpg">
+      <video class="border__video" id="vid__hachita" preload="metadata" controls playsinline poster="images/_hachita1-poster.jpg">
           <source id="" src="assets/hachita2.mp4" type="video/mp4" />
           <source id="" src="assets/hachita2.ogg" type="video/ogg" />
           Your browser does not support native video.
@@ -136,7 +136,7 @@ googletag.enableServices();
     <div class="location no-pad" data-lat="31.752576" data-long="-106.487386">
       <h5>El Paso borderland</h5>
       <h6>31.752576, -106.487386</h6>
-      <video id="" preload="metadata" controls playsinline poster="images/_elpaso-poster.jpg">
+      <video class="border__video" id="vid__elpaso" preload="metadata" controls playsinline poster="images/_elpaso-poster.jpg">
           <source id="" src="assets/elpaso.mp4" type="video/mp4" />
           <source id="" src="assets/elpaso.ogg" type="video/ogg" />
           Your browser does not support native video.
@@ -150,13 +150,13 @@ googletag.enableServices();
     <div class="location" data-lat="29.562273" data-long="-104.376493">
       <h5>Presidio</h5>
       <h6>29.562273, -104.376493</h6>
-      <video id="" preload="metadata" controls playsinline poster="images/_presido-poster.jpg">
+      <video class="border__video" id="vid__presidio" preload="metadata" controls playsinline poster="images/_presido-poster.jpg">
           <source id="" src="assets/presido.mp4" type="video/mp4" />
           <source id="" src="assets/presido.ogg" type="video/ogg" />
           Your browser does not support native video.
       </video>
       <h4>This is a test headline</h4>
-      <p>horse-race coverage copyboy the power of the press belongs to the person who owns one data visualization tweet Jeff Jarvis Patch Like button explainer, TechCrunch should isn't a business model copyright Romenesko WordPress Arianna Kindle Single Pictures of Goats section got drudged, gamification put the paper to bed the other longer Book Review The Work of Art in the Age of Mechanical Reproduction open newsroom Foursquare A.J. Liebling.</p>
+      <p>The tiny border town of Presidio sits in the Big Bend region of West Texas, more than 200 miles from major cities like Midland-Odessa or El Paso. Its closest neighbor, Ojinaga, is five times the size and just across the Rio Grande River in Mexico. The two communities, whose bloodlines and economic ties extend across the border, fear a wall will hamper a relationship in which the two communities rely on each other both economically and in times of emergency.</p>
     </div>
 
     <div class="location" data-lat="29.449884" data-long="-101.058174">
@@ -174,7 +174,7 @@ googletag.enableServices();
     <div class="location no-pad" data-lat="27.597660" data-long="-99.536872">
       <h5>Laredo</h5>
       <h6>27.597660, -99.536872</h6>
-      <video id="" preload="metadata" controls playsinline poster="images/_laredo-poster.jpg">
+      <video class="border__video" id="vid__laredo" preload="metadata" controls playsinline poster="images/_laredo-poster.jpg">
           <source id="" src="assets/laredo.mp4" type="video/mp4" />
           <source id="" src="assets/laredo.ogg" type="video/ogg" />
           Your browser does not support native video.
@@ -192,7 +192,7 @@ googletag.enableServices();
     <div class="location" data-lat="27.090503" data-long="-98.193096">
       <h5>Brooks County, Texas</h5>
       <h6>-98.193096, 27.090503</h6>
-      <video id="" preload="metadata" controls playsinline poster="images/_border-volunteer-poster.jpg">
+      <video class="border__video" id="vid__brooks" preload="metadata" controls playsinline poster="images/_border-volunteer-poster.jpg">
           <source id="" src="assets/border-volunteers.mp4" type="video/mp4" />
           <source id="" src="" type="video/ogg" />
           Your browser does not support native video.
@@ -204,13 +204,25 @@ googletag.enableServices();
     <div class="location" data-lat="26.120063" data-long="-98.292448">
       <h5>McAllen-Reynosa border</h5>
       <h6>26.120063, -98.292448</h6>
-      <video id="" preload="metadata" controls playsinline poster="images/_defaultImage.jpg">
+      <video class="border__video" id="vid__mcallen" preload="metadata" controls playsinline poster="images/_defaultImage.jpg">
           <source id="" src="" type="video/mp4" />
           <source id="" src="" type="video/ogg" />
           Your browser does not support native video.
       </video>
       <h4>The cost</h4>
       <p>The Rio Grand River is a twelve hundred mile-long first line of defense across Texas’ southern border, and Texas Department of Public Safety troopers will tell you it costs a lot to defend. Troopers use boats outfitted with kevlar panels and 30 caliber machine guns, helicopters and thousands of cameras to monitor illegal crossings. According to Texas law makers, that’s money well-spent, and the number of undocumented immigrant apprehensions back up that claim.</p>
+    </div>
+
+    <div class="location" data-lat="25.9011389" data-long="-97.5000273">
+      <h5>Brownsville</h5>
+      <h6>25.9011389, -97.5000273</h6>
+      <video class="border__video" id="vid__brownsville" preload="metadata" controls playsinline poster="images/_defaultImage.jpg">
+          <source id="" src="" type="video/mp4" />
+          <source id="" src="" type="video/ogg" />
+          Your browser does not support native video.
+      </video>
+      <h4>Headline here</h4>
+      <p>horse-race coverage copsyboy the power of the press belongs to the person who owns one data visualization tweet Jeff Jarvis Patch Like button explainer, TechCrunch should isn't a business model copyright Romenesko WordPress Arianna Kindle Single Pictures of Goats section got drudged, gamification put the paper to bed the other longer Book Review The Work of Art in the Age of Mechanical Reproduction open newsroom Foursquare A.J. Liebling.</p>
     </div>
 
     <p class="twitter-tag">Follow writer name on Twitter at <a href="urlhere">@twittertag.</a></p>
@@ -262,7 +274,17 @@ googletag.enableServices();
 
 
 {%block custom_foot%}
-	<script type="text/javascript"></script>
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71114055-1', 'auto', 'interactivesTracker');
+  ga('interactivesTracker.send', 'pageview');
+
+</script>
 {%endblock%}
 
 
