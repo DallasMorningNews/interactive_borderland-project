@@ -78,18 +78,9 @@ DFPSlotSizes = [320,50]
 var adSlot0 = googletag.defineSlot('/' + DFP_networkId + '/' + DFP_sitepage, DFPSlotSizes, "dfpAdPositionTop");
 adSlot0.setTargeting("position", "Top");
 adSlot0.addService(googletag.pubads());
-
-/*
 var adSlot1 = googletag.defineSlot('/' + DFP_networkId + '/' + DFP_sitepage, DFPSlotSizes, "dfpAdPositionMiddle");
 adSlot1.setTargeting("position", "Top2");
 adSlot1.addService(googletag.pubads());
-*/
-
-/*
-var adSlot2 = googletag.defineSlot('/' + DFP_networkId + '/' + DFP_sitepage, DFPSlotSizes, "dfpAdPositionBottom");
-adSlot2.setTargeting("position", "Top2");
-adSlot2.addService(googletag.pubads());
-*/
 
 </script>
 <script type="text/javascript">
@@ -175,8 +166,6 @@ googletag.enableServices();
 
   	<header id="story-head">
       <img src="images/_borderland-logo.png" alt="The Borderland Project logo" />
-  		<!-- <h1>Main Headline</h1>
-  		<h2>Deck head goes in this spot here</h2> -->
   	</header>
   		<!-- end storyHead -->
 
@@ -196,6 +185,7 @@ googletag.enableServices();
 
       <div id="map"></div>
       <div id="minimap"></div>
+      <p id="map-source">Satellite imagery: USGS/Landsat 8</p>
 
       <p class="intro"><span class="dropcap">H</span>orse-race coverage copyboy the power of the press belongs to the person who owns one data visualization tweet Jeff Jarvis Patch Like button explainer, TechCrunch should isn't a business model copyright Romenesko WordPress Arianna Kindle Single Pictures of Goats section got drudged, gamification put the paper to bed the other longer Book Review The Work of Art in the Age of Mechanical Reproduction open newsroom Foursquare A.J. Liebling.</p>
 
@@ -217,7 +207,7 @@ googletag.enableServices();
 
     </div>
 
-    <div class="location" data-lat="31.752576" data-long="-106.487386">
+    <div class="location no-pad" data-lat="31.752576" data-long="-106.487386">
       <h5>El Paso borderland</h5>
       <h6>31.752576, -106.487386</h6>
       <video id="" preload="metadata" controls playsinline poster="images/_elpaso-poster.jpg">
@@ -228,6 +218,17 @@ googletag.enableServices();
       <h4>This is a test headline</h4>
       <p>horse-race coverage copyboy the power of the press belongs to the person who owns one data visualization tweet Jeff Jarvis Patch Like button explainer, TechCrunch should isn't a business model copyright Romenesko WordPress Arianna Kindle Single Pictures of Goats section got drudged, gamification put the paper to bed the other longer Book Review The Work of Art in the Age of Mechanical Reproduction open newsroom Foursquare A.J. Liebling.</p>
     </div>
+
+    </section>
+
+    <div id="dfpAdPositionTop" class="ad"> <!-- to remove bottom and top rules, add class "noRule" -->
+        <p class="adLabel">Advertisement</p>
+        <script type="text/javascript">googletag.display('dfpAdPositionTop');</script>
+    </div>
+    <!-- end adBlock -->
+
+<section class="content-well">
+
 
     <div class="location" data-lat="29.562273" data-long="-104.376493">
       <h5>Presidio</h5>
@@ -253,7 +254,7 @@ googletag.enableServices();
       <p>horse-race coverage copyboy the power of the press belongs to the person who owns one data visualization tweet Jeff Jarvis Patch Like button explainer, TechCrunch should isn't a business model copyright Romenesko WordPress Arianna Kindle Single Pictures of Goats section got drudged, gamification put the paper to bed the other longer Book Review The Work of Art in the Age of Mechanical Reproduction open newsroom Foursquare A.J. Liebling.</p>
     </div>
 
-    <div class="location" data-lat="27.597660" data-long="-99.536872">
+    <div class="location no-pad" data-lat="27.597660" data-long="-99.536872">
       <h5>Laredo</h5>
       <h6>27.597660, -99.536872</h6>
       <video id="" preload="metadata" controls playsinline poster="images/_laredo-poster.jpg">
@@ -263,6 +264,12 @@ googletag.enableServices();
       </video>
       <h4>This is a test headline</h4>
       <p>horse-race coverage copsyboy the power of the press belongs to the person who owns one data visualization tweet Jeff Jarvis Patch Like button explainer, TechCrunch should isn't a business model copyright Romenesko WordPress Arianna Kindle Single Pictures of Goats section got drudged, gamification put the paper to bed the other longer Book Review The Work of Art in the Age of Mechanical Reproduction open newsroom Foursquare A.J. Liebling.</p>
+    </div>
+
+    <div class="subscribe-cta">
+      <h4>Get the latest border news at your fingertips</h4>
+      <p>If you’re looking for more in-depth content on immigration and the border, please consider supporting dallasnews.com by subscribing today.</p>
+      <a href="https://join.dallasnews.com/subscribe">Subscribe now</a>
     </div>
 
     <div class="location" data-lat="27.090503" data-long="-98.193096">
@@ -277,7 +284,7 @@ googletag.enableServices();
       <p>Eighty miles north of the Texas-Mexico border in Brooks County, South Texan rancher Mike Vickers leads the Texas Border Volunteers, a group of nearly 300 men and women who gather monthly to conduct undercover operations along the border. Their mission is to report criminal trespassing by undocumented immigrants crossing the border into the United States. Some think they are just vigilantes, but multiple law enforcement agencies across South Texas rely on them as an extra set of eyes and ears to help the Border Patrol.</p>
     </div>
 
-    <div class="location no-pad" data-lat="26.120063" data-long="-98.292448">
+    <div class="location" data-lat="26.120063" data-long="-98.292448">
       <h5>McAllen-Reynosa border</h5>
       <h6>26.120063, -98.292448</h6>
       <video id="" preload="metadata" controls playsinline poster="images/_defaultImage.jpg">
@@ -289,18 +296,18 @@ googletag.enableServices();
       <p>The Rio Grand River is a twelve hundred mile-long first line of defense across Texas’ southern border, and Texas Department of Public Safety troopers will tell you it costs a lot to defend. Troopers use boats outfitted with kevlar panels and 30 caliber machine guns, helicopters and thousands of cameras to monitor illegal crossings. According to Texas law makers, that’s money well-spent, and the number of undocumented immigrant apprehensions back up that claim.</p>
     </div>
 
+    <p class="twitter-tag">Follow writer name on Twitter at <a href="urlhere">@twittertag.</a></p>
+
     </section>
 
-    <div id="dfpAdPositionTop" class="ad"> <!-- to remove bottom and top rules, add class "noRule" -->
+    <div id="dfpAdPositionMiddle" class="ad"> <!-- to remove bottom and top rules, add class "noRule" -->
         <p class="adLabel">Advertisement</p>
-        <script type="text/javascript">googletag.display('dfpAdPositionTop');</script>
+        <script type="text/javascript">googletag.display('dfpAdPositionMiddle');</script>
     </div>
     <!-- end adBlock -->
 
 <section class="content-well">
 
-
-    <p class="twitter-tag">Follow writer name on Twitter at <a href="urlhere">@twittertag.</a></p>
 
     <section class="credits clearfix">
         <p>Author: <a href="mailto:emailaddress">Name</a></p>
@@ -314,20 +321,20 @@ googletag.enableServices();
 
 	<section class="more clearfix">
 		<h5>Read more from The Dallas Morning News</h5>
-		<a class="clearfix" href="#">
-			<img src="images/_defaultImage.jpg" alt="#" />
-			<h6>Story title goes here</h6>
-			<p>Description of the story goes in this spot here</p>
+		<a class="clearfix" href="https://interactives.dallasnews.com/2017/abt/">
+			<img src="images/_aryan.jpg" alt="Carol Blevins" />
+			<h6>My Aryan Princess</h6>
+			<p>Drugs fuel a woman’s descent into the world of the Aryan Brotherhood of Texas, once the nation’s most violent street gang.</p>
 		</a>
-		<a class="clearfix" href="#">
-			<img src="images/_defaultImage.jpg" alt="#" />
-			<h6>Story title goes here</h6>
-			<p>Description of the story goes in this spot here</p>
+		<a class="clearfix" href="https://interactives.dallasnews.com/2017/critical-choices/">
+			<img src="images/_critical.jpg" alt="LaRonda Hunter" />
+			<h6>Critical Choices</h6>
+			<p>As the future of health coverage in the U.S. remains up the air, we asked North Texans about their experiences with the Affordable Care Act.</p>
 		</a>
-		<a class="clearfix" href="#">
-			<img src="images/_defaultImage.jpg" alt="#" />
-			<h6>Story title goes here</h6>
-			<p>Description of the story goes in this spot here</p>
+		<a class="clearfix" href="https://interactives.dallasnews.com/2017/hope-for-the-rest-of-us/">
+			<img src="images/_hope.jpg" alt="Krissi Caldwell" />
+			<h6>Hope for the rest of us</h6>
+			<p>When an unthinkable crime shatters a family, a father is forced to confront the emotional wreckage.</p>
 		</a>
 	</section>
 	<!-- end more -->

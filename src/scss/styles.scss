@@ -124,6 +124,7 @@
     height: 110%;
     width: 325%;
     left: -112.5%;
+    top: -5%;
   }
 }
 
@@ -202,6 +203,28 @@
   }
 }
 
+#map-source {
+  position: fixed;
+  bottom: 0;
+  left: 500px;
+  font-family: $sans;
+  padding: 3px;
+  background-color: rgba(255,255,255,.7);
+  @include type(10px, 10px, 0);
+  @media screen and (max-width: 1000px) {
+    left: 400px;
+  }
+  @media screen and (max-width: 800px) {
+    left: 0;
+    top: calc(50vw - 19px);
+    z-index: 15;
+    bottom: auto;
+  }
+  @media screen and (max-width: 450px) {
+    top: calc(56vw - 19px;)
+  }
+}
+
 .locator {
   width: 14px;
   height: 14px;
@@ -257,12 +280,7 @@
     background-repeat: no-repeat;
   }
   &.no-pad {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    &:after {
-      display: none;
-    }
+    margin-bottom: 3.6rem;
   }
   img, video {
     width: 100%;
@@ -350,4 +368,48 @@
 
 .shareComments {
   padding: 0 0;
+}
+
+.subscribe-cta {
+ padding: 2.4rem 0 2.4rem 95px;
+ margin: 4.8rem 0 4.8rem 0;
+ border-bottom: 1px solid $black215;
+ max-width: calc(750px - 10%);
+ background-image: url('../images/_logo-small.svg');
+ background-size: 75px 86px;
+ background-repeat: no-repeat;
+ background-position: left center;
+ img {
+   width: 50px;
+   float: left;
+   margin: 0 10px 10px 0;
+ }
+ h4 {
+   font-weight: bold;
+   font-size: 2rem;
+   line-height: 2.4rem;
+ }
+ p {
+   font-family: $sans;
+   @include type(1.4rem, 1.8rem, 2.4rem);
+ }
+ a {
+   background-color: $dmnblue;
+   font-family: $sans;
+   color: white;
+   padding: 10px;
+   @include type(1.6rem, 2.4rem, 0);
+   @include transition(all, .25s, ease-out);
+   &:visited {
+     color: white;
+   }
+   &:hover {
+     background-color: darken($dmnblue, 5);
+     text-decoration: none;
+   }
+ }
+}
+
+.subscribed .subscribe-cta {
+  display: none;
 }
