@@ -58,6 +58,7 @@
   }
   h2 {
     @include type(2rem, 2.4rem, 2.4rem);
+    font-weight: normal;
   }
   button {
     background-color: white;
