@@ -138,6 +138,7 @@
   top: 0px;
   left: 500px;
   background-color: $black33;
+  will-change: contents;
   &:after {
     position: absolute;
     width: 100%;
