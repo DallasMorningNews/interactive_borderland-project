@@ -1,17 +1,22 @@
 {
   "id": "41607801151",
   "name": "borderland-project",
-  "pageTitle": "<Title>",
-  "shareTitle": "<Title>",
-  "shareText": "<Text>",
-  "tweetText": "<Text>",
+  "pageTitle": "The Borderland Project: Examining the weight of a wall",
+  "shareTitle": "The weight of a border wall",
+  "shareText": "Voices from the edge of Texas wrestle with the idea of a ‘a big, beautiful, powerful wall.’",
+  "tweetText": "Voices from the edge of Texas wrestle with the idea of a ‘a big, beautiful, powerful wall.’",
   "publishYear": 2017,
-  "publishDate": "2017-4-26T00:00:00Z",
+  "publishDate": "2017-05-16T12:00:00Z",
   "url": "http://interactives.dallasnews.com/2017/borderland-project/",
-  "authors": "<Authors - comma-separated, capitalize first letter of names. NOTE: If more than one author, you will need to manually edit the author key in the parsely json object. Author names should be comma-separated strings within an array in the parsely json object.>",
-  "desk": "<Desk>",
-  "section": "<Section>",
+  "authors": "Staff",
+  "desk": "news",
+  "section": "immigration",
   "keywords": [
+    "borderland",
+    "borderland project",
+    "border wall",
+    "border security",
+    "border patrol",
     "interactives",
     "dallas",
     "dallas news",
@@ -21,8 +26,8 @@
     "dallas morning news newspaper"
   ],
   "imgURL": "http://interactives.dallasnews.com/2017/borderland-project/images/_share.jpg",
-  "imgWidth": "<Width - w/out \"px\">",
-  "imgHeight": "<Height - w/out \"px\">",
-  "sectionTwitter": "<handle - w/out \"@\">",
-  "authorTwitter": "<handle - w/out \"@\">"
+  "imgWidth": "1200",
+  "imgHeight": "630",
+  "sectionTwitter": "@dallasnews",
+  "authorTwitter": "@dallasnews"
 }
