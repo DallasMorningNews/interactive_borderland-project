@@ -59,6 +59,9 @@
   h2 {
     @include type(2rem, 2.4rem, 2.4rem);
     font-weight: normal;
+    @media (max-width: 500px) {
+      @include type(1.8rem, 2.4rem, 1.2rem);
+    }
   }
   button {
     background-color: white;
@@ -411,6 +414,19 @@
      text-decoration: none;
    }
  }
+}
+
+.related {
+  font-family: $sans;
+  h5 {
+    font-weight: bold;
+  }
+  p {
+    @include type(1.4rem, 1.8rem, .9rem);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .subscribed .subscribe-cta {
