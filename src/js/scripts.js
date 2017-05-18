@@ -11,30 +11,59 @@ $(document).ready(() => {
   */
 
   // if a video is played ...
-  $('.border__video')[0].addEventListener('play', function () {
-    // get the id for
-    const id = $(this).attr('id');
 
-    // check to see if the video is just starting for the first time, or resuming
-    // then fire a ga event corresponding to that
-    if ($(this)[0].currentTime === 0) {
-      ga('interactivesTracker.send', 'event', `${id}-start`, 'play');
-    } else {
-      ga('interactivesTracker.send', 'event', `${id}-restart`, 'play');
-    }
+  $.each($('.border__video'), function () {
+    $(this)[0].addEventListener('play', function () {
+      // get the id for
+      const id = $(this).attr('id');
+
+      // check to see if the video is just starting for the first time, or resuming
+      // then fire a ga event corresponding to that
+      if ($(this)[0].currentTime === 0) {
+        ga('interactivesTracker.send', 'event', `${id}-start`, 'play');
+      } else {
+        ga('interactivesTracker.send', 'event', `${id}-restart`, 'play');
+      }
+    });
+
+    // fire ga event if the video is pause
+    $(this)[0].addEventListener('pause', function () {
+      const id = $(this).attr('id');
+      ga('interactivesTracker.send', 'event', `${id}-pause`, 'pause');
+    });
+
+    // fire ga event if the video ends
+    $(this)[0].addEventListener('ended', function () {
+      const id = $(this).attr('id');
+      ga('interactivesTracker.send', 'event', `${id}-ended`, 'ended');
+    });
   });
 
-  // fire ga event if the video is pause
-  $('.border__video')[0].addEventListener('pause', function () {
-    const id = $(this).attr('id');
-    ga('interactivesTracker.send', 'event', `${id}-pause`, 'pause');
-  });
-
-  // fire ga event if the video ends
-  $('.border__video')[0].addEventListener('ended', function () {
-    const id = $(this).attr('id');
-    ga('interactivesTracker.send', 'event', `${id}-ended`, 'ended');
-  });
+  // $('.border__video')[0].addEventListener('play', function () {
+  //   // get the id for
+  //   const id = $(this).attr('id');
+  //
+  //   console.log(id);
+  //   // check to see if the video is just starting for the first time, or resuming
+  //   // then fire a ga event corresponding to that
+  //   if ($(this)[0].currentTime === 0) {
+  //     ga('interactivesTracker.send', 'event', `${id}-start`, 'play');
+  //   } else {
+  //     ga('interactivesTracker.send', 'event', `${id}-restart`, 'play');
+  //   }
+  // });
+  //
+  // // fire ga event if the video is pause
+  // $('.border__video')[0].addEventListener('pause', function () {
+  //   const id = $(this).attr('id');
+  //   ga('interactivesTracker.send', 'event', `${id}-pause`, 'pause');
+  // });
+  //
+  // // fire ga event if the video ends
+  // $('.border__video')[0].addEventListener('ended', function () {
+  //   const id = $(this).attr('id');
+  //   ga('interactivesTracker.send', 'event', `${id}-ended`, 'ended');
+  // });
 
   // ***************************************************************************
 
@@ -550,7 +579,7 @@ $(document).ready(() => {
     // value of all locations that have passed the waypoint to the passed div,
     // and select the first or last index value in the array, depending on scroll direction
     waypoints.forEach((value, i) => {
-      if (direction === 'down' && value < (oldY + (height - 200))) {
+      if (direction === 'down' && value < (oldY + (height - 300))) {
         passed.push(i);
         target = passed[(passed.length - 1)];
       } else if (direction === 'up' && value > (oldY + 50)) {
@@ -572,7 +601,6 @@ $(document).ready(() => {
 
     // if our location lat long differs from the current locations's lat long,
     // change the map, update the minimap, and reassign cl to the new location
-    console.log(cl, location);
     if (cl !== location && location[0] !== 0) {
       moveMap(location);
       miniLocator.setLngLat(location);
